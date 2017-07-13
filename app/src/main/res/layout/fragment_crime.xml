@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/crime_title_label"
+        android:textSize="22sp"
+        android:textColor="@android:color/black"
+        android:padding="5dp"
+        />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.50dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+
+        />
+
+    <EditText
+        android:id="@+id/crime_title"
+        android:hint="@string/crime_title_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@android:color/darker_gray"
+        />
+
+    <TextView
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/crime_details_label"
+        android:textColor="@android:color/black"
+        android:padding="5dp"
+        />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.50dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        />
+
+
+    <Button
+        android:id="@+id/crime_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:padding="80dp"
+    />
+    <CheckBox
+        android:id="@+id/crime_solved"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/crime_solved_label"
+        />
+
+
+</LinearLayout>
