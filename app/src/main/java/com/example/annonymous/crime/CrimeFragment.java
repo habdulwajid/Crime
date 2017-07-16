@@ -18,6 +18,7 @@ import android.widget.RadioGroup;
 import android.text.format.DateFormat;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by Annonymous on 7/10/2017.
@@ -30,12 +31,29 @@ public class CrimeFragment extends Fragment {
     private LayoutInflater mInflater;
     private ViewGroup mContainer;
     private Bundle mSavedInstanceState;
+    private static final String ARG_CRIME_ID="crime_id";
+
+
+    public static CrimeFragment newInstance(UUID crimeId){
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_CRIME_ID, crimeId);
+
+        CrimeFragment fragment = new CrimeFragment();
+        fragment.setArguments(args);
+        return  fragment;
+    }
 
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        mCrime = new Crime();
+//        mCrime = new Crime();
+
+//        UUID crimeId = (UUID)getActivity().getIntent().getSerializableExtra(MainActivity.EXTRA_CRIME_ID);
+
+        UUID crimeId = (UUID)getArguments().getSerializable(ARG_CRIME_ID);
+        mCrime = CrimeLab.get(getActivity()).getCrimes(crimeId);
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -44,6 +62,7 @@ public class CrimeFragment extends Fragment {
 //        wiring up text editor
 
         mTitleField = (EditText)v.findViewById(R.id.crime_title);
+        mTitleField.setText(mCrime.getTitle());
         mTitleField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -66,6 +85,7 @@ public class CrimeFragment extends Fragment {
      //   mDateButton.setText(mCrime.getDate().toString());
         mDateButton.setEnabled(false);
         mSolvedCheckBox = (CheckBox)v.findViewById(R.id.crime_solved);
+        mSolvedCheckBox.setChecked(mCrime.isSolved());
         mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
