@@ -1,8 +1,11 @@
 package com.example.annonymous.crime;
 
+
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ShareCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -91,7 +94,8 @@ public class CrimeListFragment  extends Fragment{
 //            Toast.makeText(getActivity(),mCrime.getTitle()+ " clicked! ", Toast.LENGTH_SHORT).show();
 
 //            Intent intent = new Intent(getActivity(),MainActivity.class);
-            Intent intent = MainActivity.newIntent(getActivity(), mCrime.getId());
+//            Intent intent = MainActivity.newIntent(getActivity(), mCrime.getId());
+            Intent intent =CrimePagerActivity.newIntent(getActivity(),mCrime.getId());
             startActivity(intent);
         }
     }
